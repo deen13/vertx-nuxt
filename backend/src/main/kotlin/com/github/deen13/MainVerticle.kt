@@ -98,29 +98,23 @@ class MainVerticle : AbstractVerticle() {
   }
 
   private fun generateUserToken(): JsonObject {
-    val accessTokenExpiryInSeconds = 30L
     val accessTokenClaims = jsonObjectOf(
       "iss" to "main-verticle",
       "sub" to "user-interface",
-      "exp" to Instant.now().plus(accessTokenExpiryInSeconds, ChronoUnit.SECONDS).epochSecond,
+      "exp" to Instant.now().plus(30L, ChronoUnit.SECONDS).epochSecond,
       "aud" to FRONTEND_USER_AUDIENCE
     )
 
-    val refreshTokenExpiryInSeconds = 90L
     val refreshTokenClaims = jsonObjectOf(
       "sub" to "refreshing",
       "iss" to "main-verticle",
-      "exp" to Instant.now().plus(refreshTokenExpiryInSeconds, ChronoUnit.SECONDS).epochSecond,
+      "exp" to Instant.now().plus(90L, ChronoUnit.SECONDS).epochSecond,
       "aud" to FRONTEND_USER_AUDIENCE
     )
 
     return jsonObjectOf(
-      "token" to jsonObjectOf(
-        "accessToken" to userTokenAuth.generateToken(accessTokenClaims),
-        "expiresIn" to accessTokenExpiryInSeconds,
-        "refreshToken" to refreshTokenAuth.generateToken(refreshTokenClaims),
-        "refreshTokenExpiresIn" to refreshTokenExpiryInSeconds
-      )
+      "accessToken" to userTokenAuth.generateToken(accessTokenClaims),
+      "refreshToken" to refreshTokenAuth.generateToken(refreshTokenClaims)
     )
   }
 

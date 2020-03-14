@@ -85,17 +85,16 @@ export default {
   },
   auth: {
     cookie: false,
-    plugins: ["~/plugins/autologout.js"],
     strategies: {
       local: {
         autoLogout: true,
         _scheme: "refresh",
         token: {
-          property: "token.accessToken",
+          property: "accessToken",
           maxAge: 30,
         },
         refreshToken: {
-          property: "token.refreshToken",
+          property: "refreshToken",
           data: "refreshToken",
           maxAge: 90,
         },
@@ -105,9 +104,6 @@ export default {
           user: false,
           logout: false,
         },
-        expiresIn: "token.expiresIn",
-        expiresAt: "token.refreshTokenExpiresIn",
-        dataRefreshToken: "refreshToken",
         autoRefresh: true,
         redirect: {
           login: "/login",
