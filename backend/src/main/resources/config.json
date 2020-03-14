@@ -1,0 +1,8 @@
+{
+  "authorization": {
+    "jwt-secret": "D58EECA8E4F13705E418CFEC192830D2F4979A675EFB0500BA9CA29137B10D75",
+    "refresh-jwt-secret": "36F236B12DFBAEA1D199ADE594D57C42945E55BA9D834B9BFB4965C3DDB5E325",
+    "username": "admin",
+    "password": "github"
+  }
+}
