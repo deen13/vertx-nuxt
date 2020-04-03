@@ -12,6 +12,7 @@ This project is a demonstration of nuxt.js and vert.x in combination.
 $ ./gradlew jibDockerBuild
 
 # serve backend
+# the config is embedded to ease the setup but should be mounted in production builds
 $ docker run -p 127.0.0.1:8080:8080 backend run com.github.deen13.MainVerticle -conf /app/resources/config.json
 ```
 
