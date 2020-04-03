@@ -3,6 +3,8 @@ package com.github.deen13
 import com.fasterxml.jackson.core.JsonProcessingException
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
+import com.github.deen13.ResponseCodes.BAD_REQUEST
+import com.github.deen13.ResponseCodes.UNAUTHORIZED
 import com.github.deen13.Security.FRONTEND_USER_AUDIENCE
 import io.vertx.core.AbstractVerticle
 import io.vertx.core.json.JsonObject
@@ -21,11 +23,6 @@ import java.time.Instant
 import java.time.temporal.ChronoUnit
 
 class MainVerticle : AbstractVerticle() {
-
-  companion object {
-    private const val BAD_REQUEST = 400
-    private const val UNAUTHORIZED = 401
-  }
 
   private val refreshTokenAuth by lazy {
     val secret = config().getJsonObject("authorization").getString("refresh-jwt-secret")
