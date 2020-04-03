@@ -22,8 +22,6 @@ import java.time.temporal.ChronoUnit
 
 class MainVerticle : AbstractVerticle() {
 
-  private val logger = LoggerFactory.getLogger(MainVerticle::class.java)
-
   private val refreshTokenAuth by lazy {
     val secret = config().getJsonObject("authorization").getString("refresh-jwt-secret")
     val config = jwtAuthOptionsOf(secrets = listOf(secretOptionsOf(secret)))
