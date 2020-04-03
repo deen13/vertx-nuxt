@@ -1,6 +1,6 @@
 # :bullettrain_side: Vert.X and Nuxt.js
 
-This project uses nuxt.js and the auth-module in the frontend and vert.x in the backend. 
+This project is a demonstration of nuxt.js and vert.x in combination.
 
 ### Goals
 - [Pull Request Collaboration](https://github.com/nuxt-community/auth-module/pull/361)
