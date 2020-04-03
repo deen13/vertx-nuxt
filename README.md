@@ -23,3 +23,7 @@ $ yarn
 # serve with hot reload at localhost:3000
 $ yarn dev
 ```
+
+### Credentials
+:woman: Username: admin </br>
+:key: Password: github
