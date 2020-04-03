@@ -1,9 +1,10 @@
-# nuxt-auth-refresh-token demo
+# Vert.X and Nuxt.js
 
-This repository demonstrates the automatic jwt refresh implemented in [this](https://github.com/nuxt-community/auth-module/pull/361) 
-pull request. The frontend currently uses an workaround to redirect to the login page when the tokens are 
-absent or expired. The username is admin and the password is github. 
+This project uses nuxt.js and the auth-module in the frontend and vert.x in the backend. 
 
+### Goals
+- [Pull Request Collaboration](https://github.com/nuxt-community/auth-module/pull/361)
+- [Live Coding](https://docs.google.com/presentation/d/15aMY8K4o9OtPjzwQw8lvP6Y628AETMjLxz0l52cC8c0/edit?usp=sharing)
 
 ### Backend Setup
 ```bash
