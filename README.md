@@ -1,4 +1,4 @@
-# Vert.X and Nuxt.js
+# :bullettrain_side: Vert.X and Nuxt.js
 
 This project uses nuxt.js and the auth-module in the frontend and vert.x in the backend. 
 
