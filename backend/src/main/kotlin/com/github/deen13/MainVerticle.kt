@@ -8,7 +8,6 @@ import com.github.deen13.ResponseCodes.UNAUTHORIZED
 import com.github.deen13.Security.FRONTEND_USER_AUDIENCE
 import io.vertx.core.AbstractVerticle
 import io.vertx.core.json.JsonObject
-import io.vertx.core.logging.LoggerFactory
 import io.vertx.ext.auth.jwt.JWTAuth
 import io.vertx.ext.jwt.JWTOptions
 import io.vertx.ext.web.Router
