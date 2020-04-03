@@ -22,6 +22,11 @@ import java.time.temporal.ChronoUnit
 
 class MainVerticle : AbstractVerticle() {
 
+  companion object {
+    private const val BAD_REQUEST = 400
+    private const val UNAUTHORIZED = 401
+  }
+
   private val refreshTokenAuth by lazy {
     val secret = config().getJsonObject("authorization").getString("refresh-jwt-secret")
     val config = jwtAuthOptionsOf(secrets = listOf(secretOptionsOf(secret)))
@@ -65,7 +70,7 @@ class MainVerticle : AbstractVerticle() {
     val tokenRefreshRequest = try {
       mapper.readValue<TokenRefreshRequest>(ctx.bodyAsString)
     } catch (e: JsonProcessingException) {
-      ctx.response().setStatusCode(400).end()
+      ctx.response().setStatusCode(BAD_REQUEST).end()
       return
     }
 
@@ -75,7 +80,7 @@ class MainVerticle : AbstractVerticle() {
       if (it.succeeded()) {
         ctx.response().end(generateUserToken().toBuffer())
       } else {
-        ctx.response().setStatusCode(401).end()
+        ctx.response().setStatusCode(UNAUTHORIZED).end()
       }
     }
   }
@@ -84,14 +89,14 @@ class MainVerticle : AbstractVerticle() {
     val loginRequest = try {
       mapper.readValue<LoginRequest>(ctx.bodyAsString)
     } catch (e: JsonProcessingException) {
-      ctx.response().setStatusCode(400).end()
+      ctx.response().setStatusCode(BAD_REQUEST).end()
       return
     }
 
     if (loginRequest.matches(config().getJsonObject("authorization"))) {
       ctx.response().end(generateUserToken().toBuffer())
     } else {
-      ctx.response().setStatusCode(401).end()
+      ctx.response().setStatusCode(UNAUTHORIZED).end()
     }
   }
 

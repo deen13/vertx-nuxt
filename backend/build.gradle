@@ -46,6 +46,10 @@ dependencies {
   implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
 }
 
+detekt {
+  config = files("${project.rootDir}/detekt.yml")
+}
+
 jib {
   container.mainClass = "io.vertx.core.Launcher"
 }
