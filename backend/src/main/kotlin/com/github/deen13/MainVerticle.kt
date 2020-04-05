@@ -30,7 +30,7 @@ class MainVerticle : AbstractVerticle() {
     JWTAuth.create(vertx, config)
   }
 
-  private val userTokenAuth by lazy {
+  private val accessTokenAuth by lazy {
     val secret = config().getJsonObject("authorization").getString("jwt-secret")
 
     val config = jwtAuthOptionsOf(
@@ -49,7 +49,7 @@ class MainVerticle : AbstractVerticle() {
   override fun start() {
     val router = Router.router(vertx)
 
-    router.route("/api/*").handler(JWTAuthHandler.create(userTokenAuth, "/api/auth/"))
+    router.route("/api/*").handler(JWTAuthHandler.create(accessTokenAuth, "/api/auth/"))
     router.route().handler(BodyHandler.create())
 
     router.post("/api/auth/login").handler(this::handleLogin)
@@ -112,7 +112,7 @@ class MainVerticle : AbstractVerticle() {
     )
 
     return jsonObjectOf(
-      "accessToken" to userTokenAuth.generateToken(accessTokenClaims),
+      "accessToken" to accessTokenAuth.generateToken(accessTokenClaims),
       "refreshToken" to refreshTokenAuth.generateToken(refreshTokenClaims)
     )
   }
